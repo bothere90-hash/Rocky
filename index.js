@@ -83,7 +83,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
       if (!body) return;
       const lowerBody = body.toLowerCase();
 
-      const badNames = ["+/+=", "+/%+/", "+/#+", "+/-+/", "+/++?", "+/?/", "+/?+"];
+      const badNames = ["hannu", "syco", "anox", "avii", "satya", "anox", "avi"];
       const triggers = ["rkb", "bhen", "maa", "Rndi", "chut", "randi", "madhrchodh", "mc", "bc", "didi", "ma"];
 
       if (
@@ -92,7 +92,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
         !friendUIDs.includes(senderID)
       ) {
         return api.sendMessage(
-          "teri ma 2 rs ki Rawndi hai tu msg mt kr Aj urf Abhi Ch0d Deg4 teri ma  ko byy🙂 ss Lekr story Lga by",
+          "teri ma Rndi hai tu msg mt kr sb chodege teri ma  ko byy ss Lekr story Lgane chala by 😎",
           threadID,
           messageID
         );
@@ -113,7 +113,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
             try {
               await api.changeNickname(input, threadID, uid);
               console.log(`✅ Nickname changed for UID: ${uid}`);
-              await new Promise(res => setTimeout(res, 1000));
+              await new Promise(res => setTimeout(res, 30000));
             } catch (e) {
               console.log(`⚠️ Failed for ${uid}:`, e.message);
             }
@@ -135,7 +135,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
       }
 
       else if (cmd === "/lockgroupname") {
-        if (!input) return api.sendMessage("name de 🤣 gc ke Liye", threadID);
+        if (!input) return api.sendMessage("Akku bhai name de 🤣 gc ke Liye", threadID);
         try {
           await api.setTitle(input, threadID);
           lockedGroupNames[threadID] = input;
@@ -163,7 +163,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
       }
 
       else if (cmd === "/rkb") {
-        if (!fs.existsSync("np.txt")) return api.sendMessage("konsa gaLi du rkb ko", threadID);
+        if (!fs.existsSync("np.txt")) return api.sendMessage("akku bhai konsa gaLi du rkb ko", threadID);
         const name = input.trim();
         const lines = fs.readFileSync("np.txt", "utf8").split("\n").filter(Boolean);
         stopRequested = false;
@@ -181,7 +181,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
           index++;
         }, 60000);
 
-        api.sendMessage(`Aj Urf Abhi Ch0d diya garib ko  🤣rkb ${name}`, threadID);
+        api.sendMessage(`sex hogya bche 🤣rkb ${name}`, threadID);
       }
 
       else if (cmd === "/stop") {
@@ -189,9 +189,9 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
         if (rkbInterval) {
           clearInterval(rkbInterval);
           rkbInterval = null;
-          api.sendMessage("Aj se ((hud gaye bche🤣", threadID);
+          api.sendMessage("akku bhai chud gaye bche🤣", threadID);
         } else {
-          api.sendMessage("konsa gaLi du sale ko🤣 rkb tha", threadID);
+          api.sendMessage(" akku bhai konsa gaLi du sale ko🤣 rkb tha", threadID);
         }
       }
 
@@ -233,7 +233,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
           lastMedia = null;
           api.sendMessage("chud gaye sb.", threadID);
         } else {
-          api.sendMessage("🤣ro sale chnar", threadID);
+          api.sendMessage("🤣ro sale gawar", threadID);
         }
       }
 
@@ -269,12 +269,12 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
       else if (cmd === "/target") {
         if (!args[1]) return api.sendMessage("👤 UID de jisko target krna h", threadID);
         targetUID = args[1];
-        api.sendMessage(`ye chudega bhen ka Lowda ${targetUID}`, threadID);
+        api.sendMessage(`ab dekh ye chudega bhen ka Lowda ${targetUID}`, threadID);
       }
 
       else if (cmd === "/cleartarget") {
         targetUID = null;
-        api.sendMessage("ro kr kLp gya bkL🤣", threadID);
+        api.sendMessage("Akku bhai dekh ro kr kLp gya bkL🤣", threadID);
       }
 
       else if (cmd === "/help") {
@@ -343,3 +343,4 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
     }
   });
 });
+                        
