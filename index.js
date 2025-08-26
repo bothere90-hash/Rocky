@@ -118,10 +118,10 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
               console.log(`⚠️ Failed for ${uid}:`, e.message);
             }
           }
-          api.sendMessage("ye gribh ka bcha to Rone Lga bkL", threadID);
+          api.sendMessage("Akku bhai ye gribh ka bcha to Rone Lga bkL", threadID);
         } catch (e) {
           console.error("❌ Error in /allname:", e);
-          api.sendMessage("badh me kLpauga", threadID);
+          api.sendMessage("Akku bhai isko badh me kLpauga", threadID);
         }
       }
 
@@ -267,9 +267,9 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
       }
 
       else if (cmd === "/target") {
-        if (!args[1]) return api.sendMessage("👤 UID de jisko target krna h", threadID);
+        if (!args[1]) return api.sendMessage("👤 Akku bhai UID de jisko target krna h", threadID);
         targetUID = args[1];
-        api.sendMessage(`ab dekh ye chudega bhen ka Lowda ${targetUID}`, threadID);
+        api.sendMessage(`Akku bhai ab dekh ye chudega bhen ka Lowda ${targetUID}`, threadID);
       }
 
       else if (cmd === "/cleartarget") {
