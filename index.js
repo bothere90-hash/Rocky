@@ -150,10 +150,21 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
         api.sendMessage("🔓 Group name unlocked.", threadID);
       }
 
-      else if (cmd === "/uid") {
+      else if (cmd === "/tid") {
         api.sendMessage(`🆔 Group ID: ${threadID}`, threadID);
       }
 
+        else if (cmd === "/uid") {
+          if (event.messageReply) {
+            return api.sendMessage(`🆔 Reply UID: ${event.messageReply.senderID}`, threadID);
+          } else if (event.mentions && Object.keys(event.mentions).length > 0) {
+            const target = Object.keys(event.mentions)[0];
+            return api.sendMessage(`🆔 Mention UID: ${target}`, threadID);
+          } else {
+            return api.sendMessage(`🆔 Your UID: ${senderID}`, threadID);
+          }
+        }     
+        
       else if (cmd === "/exit") {
         try {
           await api.removeUserFromGroup(api.getCurrentUserID(), threadID);
@@ -279,12 +290,13 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
 
       else if (cmd === "/help") {
         const helpText = `
-📌 Available Commands:
+📌 Available Akku Commands:
 /allname <name> – Change all nicknames
 /groupname <name> – Change group name
 /lockgroupname <name> – Lock group name
 /unlockgroupname – Unlock group name
-/uid – Show group ID
+/uid → Reply/Mention/User UID show
+/tid → Group Thread ID show
 /exit – group se Left Le Luga
 /rkb <name> – HETTER NAME DAL
 /stop – Stop RKB command
@@ -295,7 +307,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
 /cleartarget – Target hata dega
 /sticker<seconds> – Sticker.txt se sticker spam (e.g., /sticker20)
 /stopsticker – Stop sticker loop
-/help – Show this help message🙂😁`;
+/help – Show Apko Akku ki help pad gyi🙂😁`;
         api.sendMessage(helpText.trim(), threadID);
       }
 
