@@ -150,10 +150,6 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
         api.sendMessage("🔓 Group name unlocked.", threadID);
       }
 
-      else if (cmd === "/tid") {
-        api.sendMessage(`🆔 Group ID: ${threadID}`, threadID);
-      }
-
         else if (cmd === "/uid") {
           if (event.messageReply) {
             return api.sendMessage(`🆔 Reply UID: ${event.messageReply.senderID}`, threadID);
