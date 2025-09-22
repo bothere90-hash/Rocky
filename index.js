@@ -113,7 +113,7 @@ login({ appState: JSON.parse(fs.readFileSync("appstate.json", "utf8")) }, (err, 
             try {
               await api.changeNickname(input, threadID, uid);
               console.log(`✅ Nickname changed for UID: ${uid}`);
-              await new Promise(res => setTimeout(res, 30000));
+              await new Promise(res => setTimeout(res, 1000));
             } catch (e) {
               console.log(`⚠️ Failed for ${uid}:`, e.message);
             }
