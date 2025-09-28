@@ -363,14 +363,13 @@ module.exports = {
   run: async ({ api, event, args, ADMIN_UID }) => {
     const { threadID, senderID } = event;
 
-    if (senderID !== ADMIN_UID) {
+    else if (senderID !== ADMIN_UID) {
       return api.sendMessage("❌ Only Admin can use this command.", threadID);
     }
 
     const sub = args[0]?.toLowerCase();
 
-    // Add new response
-    if (sub === "add") {
+    else if (cmd === "/add") {
       const match = args.slice(1).join(" ").match(/^(.*?)\s*\((.*?)\)$/);
       if (!match) {
         return api.sendMessage("❌ Format: .response add <trigger> (<reply>)", threadID);
@@ -382,8 +381,7 @@ module.exports = {
       return api.sendMessage(`✅ Added response:\nTrigger: ${trigger}\nReply: ${reply}`, threadID);
     }
 
-    // List all
-    if (sub === "list") {
+    else if (cmd === "/list") {
       const responses = loadResponses();
       if (responses.length === 0) return api.sendMessage("⚠ No responses saved.", threadID);
       const msg = responses
@@ -392,8 +390,7 @@ module.exports = {
       return api.sendMessage(`📋 Saved Responses:\n${msg}`, threadID);
     }
 
-    // Delete response
-    if (sub === "del") {
+    else if (cmd === "/del") {
       const index = parseInt(args[1]);
       if (isNaN(index)) return api.sendMessage("❌ Format: .response del <id>", threadID);
       const responses = loadResponses();
@@ -408,7 +405,6 @@ module.exports = {
     return api.sendMessage("⚙ Usage:\n.response add <trigger> (<reply>)\n.response list\n.response del <id>", threadID);
   },
 
-  // Auto reply system
   onEvent: async ({ api, event }) => {
     if (event.type !== "message" || !event.body) return;
 
